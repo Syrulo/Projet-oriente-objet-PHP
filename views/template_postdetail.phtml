@@ -1,0 +1,30 @@
+<section id="detail">
+
+<h1><?= $article['title'] ?></h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio vel exercitationem quasi, nemo voluptatem eligendi neque, repellendus unde iusto explicabo numquam voluptatum illum expedita ab quia, quibusdam doloribus dolorum. Nulla.</p>
+<section id="detail">
+        <div class="card">
+        <h5 class="card-title"><?= $article['title'] ?></h5>
+            <img src="<?= $article['image'] ?>">
+            <div class="card-body">
+                <h5 class="card-title"><?= $article['title'] ?></h5>
+                <p class="card-text"><?= substr($article['description'],0,60) ?>...</p>
+                <p><small>Post by: <strong><?= $article['firstname'] ?> <?= $article['lastname'] ?></strong></small></p>
+                at: <strong> <?= $article['created_at'] ?>
+            </div>
+            <?php if($auth::isRole("ROLE_MEMBER")): ?>
+            <form method="POST" action="?page=postdetail&action=add_comment&id=<?= $post_id ?>">
+                <h4>Leave a comment here :</h4>
+                <div class="form-floating">
+                    <textarea class="form-control" name="commentaire" placeholder="Leave a comment here" id="commentaire" style="height: 100px"></textarea>
+                    <label for="commentaire">Commentaire</label>
+                </div>
+                <button type="submit" class="btn btn-dark">Send</button>
+            </form>
+            <?php endif; ?>
+            <h2>Tout les commentaires</h2>
+           <?php foreach($comments as $message): ?>
+            <p><small>Author: <strong><?= $message['firstname'] ?> <?= $message['lastname'] ?> <?= $message['commentaire'] ?> at: <?= $message['created_at'] ?></strong></small></p>
+           <?php endforeach; ?>
+        </div>
+</section>

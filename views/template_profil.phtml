@@ -1,0 +1,37 @@
+<section id="profil" class="d-flex p-2 mt-5 row">
+
+<h1 class="mb-5">Profil du compte</h1>
+
+<div class="row">
+<div class="profil col-4 mb-4 ms-2 border border-dark p-2 mb-2">
+<h5>Firstname : <?= $sql['firstname'] ?></h5>
+</div>
+<div class="profil col-4 mb-4 ms-2 border border-dark p-2 mb-2">
+<h5>Lastname : <?= $sql['lastname'] ?></h5>
+</div>
+</div>
+<div class="profil col-4 mb-4 ms-2 border border-dark p-2 mb-2">
+<h5>Email : <?= $sql['email'] ?></h5>
+</div>
+<div class="profil col-10 mb-4 ms-2 border border-dark p-2 mb-2">
+<h5>Address1 : <?= $sql['address1'] ?></h5>
+</div>
+<div class="profil col-10 mb-4 ms-2 border border-dark p-2 mb-2">
+<h5>Address2 : <?= $sql['address2'] ?></h5>
+</div>
+<div class="row">
+<div class="profil col-4 mb-4 ms-2 border border-dark p-2 mb-2">
+<h5>City : <?= $sql['city'] ?></h5>
+</div>
+<div class="profil col-4 mb-4 ms-2 border border-dark p-2 mb-2">
+<h5>State : <?= $sql['state'] ?></h5>
+</div>
+<div class="profil col-2 mb-4 ms-2 border border-dark p-2 mb-2 ">
+<h5>ZIP : <?= $sql['zip'] ?></h5>
+</div>
+</div>
+<div class="d-flex justify-content-center mt-5 mb-5">
+<a class="btn btn-warning mb-3" href="?page=profilupdate&id=<?= $sql['id'] ?>" role="button">Update Profile</a>
+</div>
+
+</section>

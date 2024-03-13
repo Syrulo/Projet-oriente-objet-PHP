@@ -1,0 +1,77 @@
+<?php
+namespace App\Models;
+
+use App\Services\Utils;
+
+abstract class AbstractManager
+{
+    protected static $db;
+    protected static $tableName;
+    protected static $obj;
+
+    public function getAll($nb = null,$query=null){
+    $limit = !is_null($nb) ? " LIMIT ".$nb : "";
+    $results = [];
+    $default_query = "SELECT * FROM ".self::$tableName." ORDER BY id DESC";
+    $sql_query = $query===null ? $default_query : $query;
+    $results = self::$db->selectAll($sql_query.$limit);
+    return $results;
+    }
+
+    public function getOne($query=null,$params=[])
+    {
+        $default_query = "SELECT * FROM ".self::$tableName." LIMIT 1";
+        $sql_query = $query===null ? $default_query : $query;
+        $row = [];
+        $row = self::$db->select($sql_query, $params);
+        return $row;
+    }
+
+    public function getOneById($id = null):array
+    {
+        $where = !is_null($id) ? "WHERE id=?" : "";
+        $row = [];
+        $row = self::$db->select("SELECT * from ".self::$tableName." ".$where." LIMIT 1", [$id]);
+        return $row;
+    }
+
+    public function insert($data = []){
+        $fields = self::$obj->getAttributes();
+        foreach($fields as $v){ // ["?","?","?"]
+            $values[] = "?";
+        }
+        $str_fields = implode(",",$fields); // email, password, roles
+        $str_values = implode(",",$values); // ?,?,?
+        // On veut obtenir une requete du type:
+        // INSERT INTO user (email,password,roles) VALUES (?,?,?)
+        $query = "INSERT INTO ".self::$tableName." (".$str_fields.") VALUES (".$str_values.")";
+        // Utils::dump_die($query);
+        $insert = self::$db->query($query,$data);
+    return $insert;
+    }  
+
+    
+    public function update($id = null, $data = []) {
+        $fields = self::$obj->getAttributes();
+        foreach($fields as $k => $v){ // [title=?,description=?,image=?]
+            $values[] = $v." = ? ";
+    }
+    $str_values = implode(",",$values);
+    $query = "UPDATE ".self::$tableName." SET ".$str_values." WHERE id='".$id."'";
+    var_dump($query);
+    $update = self::$db->query($query,$data); 
+    return $update;
+}
+public function updateQuery($query, $data=[]){
+    self::$db->query($query,$data);
+}
+    public function delete($id = null)
+    {
+        if(!is_null($id)){
+            self::$db->query("DELETE FROM ".self::$tableName." WHERE id=?",[$id]);
+            return true;
+        }
+        return false;
+    }
+
+}
