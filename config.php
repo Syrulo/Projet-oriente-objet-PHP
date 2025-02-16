@@ -8,6 +8,6 @@ const DB_HOST = 'localhost';
 const DB_NAME = 'mvc_php';
 const DB_PORT = '3306';
 const DB_USER = 'root';
-const DB_PASS = '';
+const DB_PASS = 'root';
 
 const CONFIG_COOKIE_NAME = "Mon_Super_Cookie_OOP";

@@ -1,0 +1,35 @@
+<h1>Liste des utilisateurs</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Email</th>
+            <th scope="col">Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if (isset($users) && is_array($users)) :
+        foreach ($users as $user) : ?>
+            <tr>
+            <th scope="row"><?= $user['id'] ?></th>
+            <td><?= $user['email'] ?></td>
+            <td><?= $user['roles'] ?></td>
+            <td><br><a class="btn btn-danger" href="javascript:deleteUser(<?= $user['id'] ?>)" role="button">Delete</a></td>
+            </tr>
+        <?php endforeach ?>
+    <?php else : echo "Aucun utilisateur trouvé.";
+    endif ?>
+    </tbody>
+</table>
+
+<script>
+    function deleteUser(userId){
+        const question = window.confirm("Are you sure you want to delete the user " + userId + " ?");
+        if (question === true){
+            location.href = "?page=admin_profil_list&action=delete&id=" + userId;
+        }
+    }
+</script>
+
+

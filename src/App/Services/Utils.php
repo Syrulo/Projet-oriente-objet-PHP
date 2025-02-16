@@ -4,25 +4,6 @@ namespace App\Services;
 
 class Utils{
 
-    const DB_HOST = "localhost";
-    const DB_NAME = "mvc_php";
-    const DB_USER = "root";
-    const DB_PASS = "motdepassrootquimarche";
-
-    // Fonction de connection
-    // static function connectDB()
-    // {
-    //     $db = false;
-    //     try {
-    //     $db = new PDO('mysql:host='.self::DB_HOST.';dbname='.self::DB_NAME, 'root', '');
-    // } catch (PDOException $e) {
-    //     $error = $e;
-    //      // tenter de réessayer la connexion après un certain délai, par exemple
-    //         echo "Hum problème de connexion au serveur de base de données".$e;
-    //     }
-    //     return $db;
-    // }
-
     // Fonction de debug simple
     static function dump($var){
         echo "<pre>";

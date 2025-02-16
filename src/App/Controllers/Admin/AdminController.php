@@ -1,5 +1,6 @@
 <?php
-namespace App\Controllers;
+
+namespace App\Controllers\Admin;
 
 use App\Controllers\AbstractController;
 use App\Services\Authenticator;
@@ -17,7 +18,7 @@ class AdminController extends AbstractController{
     public function index() {
         $dbPost = new PostManager();
         $posts= $dbPost->getAll();
-        $template = './views/template_admin.phtml';
+        $template = './views/admin/template_admin.phtml';
         $this->render($template,[
             'title'=>'Welcome to the Admin Dashboard',
             'posts'=>$posts

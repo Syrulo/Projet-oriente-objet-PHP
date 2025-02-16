@@ -1,11 +1,13 @@
 <?php
-namespace App\Controllers;
+
+namespace App\Controllers\Admin;
 
 use App\Controllers\AbstractController;
 use App\Models\CommentaireManager;
 use App\Services\Authenticator;
 use App\Models\PostManager;
 use App\Services\Utils;
+
 class AdminpostController extends AbstractController{
 
     public function __construct(){
@@ -16,7 +18,7 @@ class AdminpostController extends AbstractController{
     }
 
     public function index() {
-        $template = './views/template_admin_post_add.phtml';
+        $template = './views/admin/template_admin_post_add.phtml';
         $this->render($template,[]);
     }
 
@@ -59,7 +61,7 @@ class AdminpostController extends AbstractController{
             header("Location:?page=admin");
         }    
         $post = $manager->getOneById($post_id);
-        $template = './views/template_admin_post_update.phtml';
+        $template = './views/admin/template_admin_post_update.phtml';
         $this->render($template,[
             'post_id' => $post_id,
             'the_post' => $post

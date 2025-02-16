@@ -1,15 +1,22 @@
-#caroussel img{
-    aspect-ratio: 16/10;
+#caroussel img {
+  width: 100%; /* Les images prennent toute la largeur du carrousel */
+  height: 60vh; /* Hauteur fixe pour toutes les images */
+  object-fit: cover; /* L'image couvre l'espace sans être déformée */
+  object-position: center; /* Centrer l'image dans l'espace */
 }
+
 #logo{
   width: 50px;
 }
+
 #message{
   height: 120px;
 }
+
 img.thumbnail{
   width: 100px;
 }
+
 #gallery img{
   aspect-ratio: 16/10;
 }
