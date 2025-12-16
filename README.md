@@ -1,4 +1,4 @@
-# Gallery Project (PHP / POO)
+## Gallery Project (PHP / POO)
 
 Petit projet personnel et première expérience de développement orienté objet en PHP. Il est largement perfectible, certaines fonctionnalités ou bonnes pratiques restant à améliorer, mais m’a permis de comprendre les bases de la POO, du MVC et de la gestion des rôles utilisateur.
 
